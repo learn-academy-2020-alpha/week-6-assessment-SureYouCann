@@ -8,12 +8,12 @@
 # 1)
 class BlogPostsController < ApplicationController
   def index
-    # 2)
+    # 2) stores all the instances of blogposts
     @posts = BlogPost.all
   end
 
   def show
-    # 3)
+    # 3)stores the blogpost with the specified paramater
     @post = BlogPost.find(params[:id])
   end
 
@@ -22,7 +22,7 @@ class BlogPostsController < ApplicationController
   end
 
   def create
-    # 5)
+    # 5) puts all the data from the form (from 'new.html.erb') and store it as a new instance of blogpost
     @post = BlogPost.create(blog_post_params)
     if @post.valid?
       redirect_to @post
@@ -36,7 +36,7 @@ class BlogPostsController < ApplicationController
     if @post.destroy
       redirect_to blog_posts_path
     else
-      # 6)
+      # 6) making sure the user stays on the page
       redirect_to blog_post_path(@post)
     end
   end
